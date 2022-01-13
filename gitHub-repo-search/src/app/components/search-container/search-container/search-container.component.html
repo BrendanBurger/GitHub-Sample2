@@ -7,7 +7,7 @@
     </div>
   </div>
   <div *ngIf="isLoading" style="margin: 3rem;">
-    <div class="ui active centered inline loader"></div>
+    <div class="ui active centered inline loader huge"><span>Loading Results...</span></div>
   </div>
   <app-search-list *ngIf="!isLoading" [repos]="repositories"></app-search-list>
 </div>
