@@ -1,21 +1,22 @@
 <div class="ui four column grid">
-    <div class="column" *ngFor="let repo of repos">
-      <div class="ui card">
-        <div class="image">
-          <img [src]="repo.owner.avatar_url">
-        </div>
-        <div class="content">
-          <a class="header" style="margin: 1em 0 1em 0;">{{ repo.name }}</a>
-          <div class="meta">
-            <span class="date" style="font-weight: bolder;">
-              <a [href]="repo.url" target="_blank">{{ repo.name }}</a>
-            </span>
-            <span class="ui right floated date" style="font-weight: bolder;">{{ repo.created_at }}</span>
+    <div class="column" style="background-color: #808080c9;"*ngFor="let repo of repos">
+      <a [href]="repo.html_url">
+        <div class="ui card">
+          <div class="image">
+            <img [src]="repo.owner.avatar_url">
           </div>
-          <div class="description">
-            {{ repo.description}}
+          <div class="content">
+            <a class="header" style="margin: 1em 0 1em 0;">{{ repo.name }}</a>
+            <div class="meta">
+              <span class="date" style="font-weight: bolder;">
+              </span>
+              <span class="ui right floated date" style="font-weight: bolder;">Created : {{ repo.created_at }}</span>
+            </div>
+            <div class="description">
+              {{ repo.description}}
+            </div>
           </div>
         </div>
-      </div>
+      </a>
     </div>
   </div>

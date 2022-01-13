@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http'
 import { map } from 'rxjs/operators'
 import { Observable } from 'rxjs';
 import { NullTemplateVisitor } from '@angular/compiler';
-import { gitHubResponse } from '../../models/search.types'
+import { gitHubResponse, gitHubRepo} from '../../models/search.types'
 
 @Injectable({
   providedIn: 'root'
@@ -22,7 +22,13 @@ export class RepoSearchService {
 
     return this.http.get(url)
     .pipe(
-      map((response: any) => response)
+      map((response: any) => {
+        response.items.forEach((x: gitHubRepo) => {
+          // Would typically do in a date http interceptor, if more time
+          x.created_at = new Date(x.created_at).toDateString()
+        })
+        return response
+      })
     );
   }
 }

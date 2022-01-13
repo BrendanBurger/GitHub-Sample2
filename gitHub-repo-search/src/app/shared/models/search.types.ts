@@ -14,7 +14,7 @@ export type gitHubRepo = {
         id: number,
         avatar_url: string
     },
-    url: string,
+    html_url: string,
     description: string,
     created_at: string
 }

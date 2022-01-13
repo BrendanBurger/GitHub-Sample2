@@ -1,10 +1,11 @@
-<div class="ui four column grid">
-    <div class="ten wide column centered">
+<div class="ui four column grid dividing header" style="background-color: #808080;"> 
+    <div class="ten wide column centered black">
       <div class="ui fluid action input">
         <input
           #input
           type="text"
-          placeholder="Search for a gitHub repository...">
+          placeholder="Enter at least 3 characters to search for a gitHub repository..."
+          (keyup)="onEnter(input.value)">
       </div>
     </div>
   </div>
