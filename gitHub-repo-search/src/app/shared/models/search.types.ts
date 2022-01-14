@@ -16,5 +16,9 @@ export type gitHubRepo = {
     },
     html_url: string,
     description: string,
-    created_at: string
+    created_at: string,
+    forks: number,
+    watchers: number,
+    stargazers_count: number,
+    open_issues: number
 }

@@ -1,6 +1,6 @@
 <div>
   <app-search-input (search)="handleSearch($event)"></app-search-input>
-  <div *ngIf="inputStarted && !repositories.length" class="ui four wide column centered grid" style="margin: 3rem;">
+  <div *ngIf="inputStarted && !isLoading && !repositories.length" class="ui four wide column centered grid" style="margin: 3rem;">
     <div class="ui raised aligned segment red warning message">
       <i class="warning icon"></i>
       <span class="ui centered" style="margin: 0 auto;">No Repositories Found</span>
@@ -9,5 +9,23 @@
   <div *ngIf="isLoading" style="margin: 3rem;">
     <div class="ui active centered inline loader huge"><span>Loading Results...</span></div>
   </div>
-  <app-search-list *ngIf="!isLoading" [repos]="repositories"></app-search-list>
+  <div *ngIf="!isLoading && !apiTimeout" style="margin: 3rem;">
+    <app-search-list *ngIf="!isLoading" [repos]="repositories"></app-search-list>
+  </div>
+  
+  <div *ngIf="apiTimeout">
+    <div class="ui active centered inline loader huge"></div>
+    <div class="ui centered grid" style="margin-top: 1rem;">
+      <div class="fourteen wide column">
+        <h1 class="ui centered aligned Huge header" style="padding-top: 2rem;">
+          <a [href]="gitHubDocsLink">
+          <span style="vertical-align: middle; "><p> The gitHub api for unauthenticated requests only allows 10 requests per min </p></span>
+          <span style="vertical-align: middle; "><countdown [config]="countdownConfig" (event)="handleEvent($event)"></countdown>  until the Api is available again </span>
+          </a>
+        </h1>
+      </div>
+    </div>
+
+  
+  </div>
 </div>
