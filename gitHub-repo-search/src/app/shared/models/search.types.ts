@@ -22,3 +22,21 @@ export type gitHubRepo = {
     stargazers_count: number,
     open_issues: number
 }
+
+export enum sortOptions {
+  stars = 'stars',
+  forks = 'forks',
+  help_wanted_issues = 'help-wanted-issues',
+  updated = 'updated'
+} 
+
+export enum directionsOptions {
+    desc = 'desc',
+    asc = 'asc'
+}
+
+export type searchOptions = {
+    chars: string,
+    sortDirection: directionsOptions,
+    sortOption: sortOptions
+}

@@ -1,6 +1,7 @@
 import { Component, AfterViewInit, ViewChild, ElementRef, Output, EventEmitter, OnInit } from '@angular/core';
 import { fromEvent } from 'rxjs';
 import { debounceTime, pluck, distinctUntilChanged, filter, map } from 'rxjs/operators';
+import { directionsOptions, sortOptions, searchOptions} from '../../shared/models/search.types'
 
 @Component({
   selector: 'app-search-input',
@@ -9,34 +10,41 @@ import { debounceTime, pluck, distinctUntilChanged, filter, map } from 'rxjs/ope
 })
 export class SearchInputComponent implements OnInit {
   @ViewChild('input') inputElement!: ElementRef;
-  @Output() search: EventEmitter<string> = new EventEmitter<string>();
-  value = 'test';
+  @Output() search: EventEmitter<searchOptions> = new EventEmitter<searchOptions>();
+  value = ' ';
+  orderOptions: sortOptions[] = [sortOptions.forks, sortOptions.help_wanted_issues, sortOptions.stars, sortOptions.updated];
+  sortDirections: directionsOptions[] = [directionsOptions.asc, directionsOptions.desc];
+
+  sortOrder!: sortOptions
+  sortDirection!: directionsOptions
 
   constructor() { }
   ngOnInit(): void {
   }
 
-
-  // ngAfterViewInit(): void {
-  //   fromEvent(this.inputElement.nativeElement, 'keyup')
-  //     .pipe(
-  //       debounceTime(500),
-  //       pluck('target', 'value'),
-  //       distinctUntilChanged(),
-  //       filter((value: any) => value.length > 3),
-  //       map((value) => value)
-  //     )
-  //     .subscribe(value => {
-  //       this.search.emit(value);
-  //     });
-  // }
-
-
   onEnter(value: string) { 
-    if (value.length >= 3 )
-      {
-        this.search.emit(value);
-      }
+    this.value = value;
+    this.emitSearch();
   }
 
+  updateSortOrder(e: any){
+    this.sortOrder = e.target.value;
+    this.emitSearch();
+  }
+
+  updateSortDirection(e: any){
+    this.sortDirection = e.target.value;
+    this.emitSearch();
+  }
+   
+  emitSearch() {
+    if (this.value.length > 2) {
+      const query :searchOptions= {
+        sortDirection: this.sortDirection,
+        sortOption: this.sortOrder,
+        chars: this.value
+      }
+      this.search.emit(query)
+    }
+  }
 }

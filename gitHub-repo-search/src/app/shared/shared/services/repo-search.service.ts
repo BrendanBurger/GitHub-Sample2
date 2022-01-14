@@ -4,6 +4,7 @@ import { map } from 'rxjs/operators'
 import { Observable } from 'rxjs';
 import { NullTemplateVisitor } from '@angular/compiler';
 import { gitHubResponse, gitHubRepo} from '../../models/search.types'
+import { sortOptions, directionsOptions} from '../../models/search.types'
 
 @Injectable({
   providedIn: 'root'
@@ -17,8 +18,8 @@ export class RepoSearchService {
   constructor(private http: HttpClient) { }
 
   //TODO: params
-  getRepositories(query: string = '', page: number = 1, sort = null, order = NullTemplateVisitor): Observable <gitHubResponse>  {
-    const url = `${this.API_URL}?q=${query}`
+  getRepositories(query: string = '', sortOptions?: sortOptions, sortDirection?: directionsOptions): Observable <gitHubResponse>  {
+    const url = `${this.API_URL}?q=${query}&sort=${sortOptions || null}&order=${sortDirection || null}`
 
     return this.http.get(url)
     .pipe(

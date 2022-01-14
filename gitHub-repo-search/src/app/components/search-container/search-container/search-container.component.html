@@ -6,7 +6,7 @@
       <span class="ui centered" style="margin: 0 auto;">No Repositories Found</span>
     </div>
   </div>
-  <div *ngIf="isLoading" style="margin: 3rem;">
+  <div *ngIf="isLoading && !apiTimeout" style="margin: 3rem;">
     <div class="ui active centered inline loader huge"><span>Loading Results...</span></div>
   </div>
   <div *ngIf="!isLoading && !apiTimeout" style="margin: 3rem;">

@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { RepoSearchService } from '../../../shared/shared/services/repo-search.service'
-import { gitHubResponse, gitHubRepo } from '../../../shared/models/search.types'
+import { gitHubResponse, gitHubRepo, directionsOptions, sortOptions, searchOptions } from '../../../shared/models/search.types'
 import { CountdownComponent, CountdownConfig, CountdownEvent } from 'ngx-countdown';
 
 @Component({
@@ -24,9 +24,9 @@ export class SearchContainerComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  handleSearch(inputText: string) {
+  handleSearch(query: searchOptions) {
     this.isLoading = true;
-    this.repoSearchService.getRepositories(inputText)
+    this.repoSearchService.getRepositories(query.chars, query.sortOption, query.sortDirection)
       .subscribe((results) => { 
         this.repositories = results.items
       },

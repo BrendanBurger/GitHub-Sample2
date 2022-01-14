@@ -6,6 +6,40 @@
           type="text"
           placeholder="Enter at least 3 characters to search for a gitHub repository..."
           (keyup)="onEnter(input.value)">
+      </div> 
+      <div class="ten wide column centered">
+        <div class="ui labeled input small" style="padding-top: 2rem;">
+          <div class="ui label" style="color:blue">Choose Sort Order</div>
+          <select class="ui selection"
+              #sortOrder (change)="updateSortOrder($event)">
+                <option value="default">Default</option>
+                <option *ngFor="let order of orderOptions" [value]="order">
+                    {{order}}
+                </option>
+            </select>
+        </div>
+
+        <div class="ui labeled input small" style="padding-top: 2rem; padding-left: 4rem;">
+          <div class="ui label" style="color:blue">Choose Sort direction</div>
+          <select #sortDirection (change)="updateSortDirection($event)">
+            <option value="default">Desc</option>
+            <option *ngFor="let direction of sortDirections" [value]="direction">
+                {{direction}}
+            </option>
+          </select>
+        </div>
+
+        <div class="ui labeled input small" style="padding-top: 2rem; padding-left: 5rem;">
+          <div class="ui label" style="color:blue">Additional Options</div>
+          <select #sample>
+            <option>Todo0</option>
+            <option>Todo1</option>
+            <option>Todo2</option>
+          </select>
+        </div>
       </div>
     </div>
-  </div>
+</div>
+      
+  
+
