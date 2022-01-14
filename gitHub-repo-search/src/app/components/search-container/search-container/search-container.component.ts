@@ -43,8 +43,8 @@ export class SearchContainerComponent implements OnInit {
   handleEvent(e: CountdownEvent) {
     console.log(e)
     if (e.action === 'done') {
-      console.log('here')
       this.apiTimeout = false;
+      this.isLoading = false;
     }
   }
 

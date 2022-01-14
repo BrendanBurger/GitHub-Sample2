@@ -1,11 +1,19 @@
 import { TestBed } from '@angular/core/testing';
 import { AppComponent } from './app.component';
+import { SearchListComponent } from './components/search-list/search-list/search-list.component';
+import { SearchInputComponent } from './components/search-input/search-input.component';
+import { SearchContainerComponent } from './components/search-container/search-container/search-container.component'
+import { HttpClientModule } from '@angular/common/http';
 
 describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [
-        AppComponent
+        AppComponent,
+        SearchContainerComponent,
+        SearchInputComponent,
+        SearchListComponent,
+        HttpClientModule
       ],
     }).compileComponents();
   });

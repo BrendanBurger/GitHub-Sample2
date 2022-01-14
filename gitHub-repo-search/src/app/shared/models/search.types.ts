@@ -1,7 +1,7 @@
 export type gitHubResponse = {
     total_count: number,
     incomplete_results: boolean,
-    items: []
+    items: gitHubRepo[]
 }
 
 export type gitHubRepo = {

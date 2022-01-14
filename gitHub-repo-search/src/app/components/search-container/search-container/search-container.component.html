@@ -10,7 +10,7 @@
     <div class="ui active centered inline loader huge"><span>Loading Results...</span></div>
   </div>
   <div *ngIf="!isLoading && !apiTimeout" style="margin: 3rem;">
-    <app-search-list *ngIf="!isLoading" [repos]="repositories"></app-search-list>
+    <app-search-list [repos]="repositories"></app-search-list>
   </div>
   
   <div *ngIf="apiTimeout">
