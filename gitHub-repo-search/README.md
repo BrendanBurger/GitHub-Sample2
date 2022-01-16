@@ -1,27 +1,65 @@
-# GitHubRepoSearch
+# GitHub-Sample2
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.0.2.
+<!-- ABOUT THE PROJECT -->
+## About The Project
 
-## Development server
+Sample POC, gitHub repository search web application
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+### Built With
 
-## Code scaffolding
+* [Angular](https://angular.io/)
+* [Node](https://nodejs.org/en/)
+* [Express](https://expressjs.com/)
+* [Fomantic-ui](https://cdn.jsdelivr.net/npm/fomantic-ui@2.8.5/dist/semantic.min.css")
+* [RxJs](https://rxjs.dev/)
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+### Other third party packages/tools used
+* [ngx-countdown](https://cipchk.github.io/ngx-countdown/#/) - Used to display a countDown timer, when gitHub search api reaches request limit
 
-## Build
+* [Heroku](https://dashboard.heroku.com/login) - Used to deploy application
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+* [GitHub search-repository api](https://docs.github.com/en/rest/reference/search#search-repositories)
+-NOTE - The free non-auth version of the api only allows, a max of 10 requests per 1 min.
 
-## Running unit tests
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-## Running end-to-end tests
+## Getting Started
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+This is an example of how you may give instructions on setting up your project locally.
+To get a local copy up and running follow these simple example steps.
 
-## Further help
+### Prerequisites
+Things you need to use the software and how to install them.
+* npm
+  ```sh
+  npm install npm@latest -g
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+### Installation
+
+_Below is steps to run project locally
+
+1. Clone the repo
+   ```sh
+   git clone https://github.com/BrendanBurger/GitHub-Sample2/
+   ```
+2. Install NPM packages
+   ```sh
+   npm install
+   ```
+3. Start the application locally
+   ```sh
+   npm start
+
+
+### Deployment
+* Deployed at http://github-search-brendan.herokuapp.com/
+
+
+### Could use work
+Areas that could use improvements, if more time
+
+* Testing - Lacking unit test coverage, began to write a unit test for services.
+* Styling - The stlying overall could use improvements, layout of page could be much better.
+* Searching/Sorting features - Implemented only a couple (MVP)sorting features, could be expanded to more options.
+* Error Handliing - Only implemented logic to handle gitHub-search-api request limit, could be expanded on via interceptors
+* Search Results View - Search results view to be enhanced to show within a table, with more info per Result
