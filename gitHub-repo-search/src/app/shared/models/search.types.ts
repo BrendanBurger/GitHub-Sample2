@@ -4,6 +4,7 @@ export type gitHubResponse = {
     items: gitHubRepo[]
 }
 
+//Only using relevant properties 
 export type gitHubRepo = {
     id: number,
     node_id: string,

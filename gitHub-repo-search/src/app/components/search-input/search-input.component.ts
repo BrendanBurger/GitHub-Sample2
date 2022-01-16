@@ -9,12 +9,13 @@ import { directionsOptions, sortOptions, searchOptions} from '../../shared/model
   styleUrls: ['./search-input.component.css']
 })
 export class SearchInputComponent implements OnInit {
+
   @ViewChild('input') inputElement!: ElementRef;
   @Output() search: EventEmitter<searchOptions> = new EventEmitter<searchOptions>();
   value = ' ';
+
   orderOptions: sortOptions[] = [sortOptions.forks, sortOptions.help_wanted_issues, sortOptions.stars, sortOptions.updated];
   sortDirections: directionsOptions[] = [directionsOptions.asc, directionsOptions.desc];
-
   sortOrder!: sortOptions
   sortDirection!: directionsOptions
 

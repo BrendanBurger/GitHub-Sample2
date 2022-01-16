@@ -20,7 +20,7 @@
         <h1 class="ui centered aligned Huge header" style="padding-top: 2rem;">
           <a [href]="gitHubDocsLink">
           <span style="vertical-align: middle; "><p> The gitHub api for unauthenticated requests only allows 10 requests per min </p></span>
-          <span style="vertical-align: middle; "><countdown [config]="countdownConfig" (event)="handleEvent($event)"></countdown>  until the Api is available again </span>
+          <span style="vertical-align: middle; "><countdown [config]="countdownConfig" (event)="handleCountdownEvent($event)"></countdown>  until the Api is available again </span>
           </a>
         </h1>
       </div>

@@ -10,12 +10,15 @@ import { CountdownComponent, CountdownConfig, CountdownEvent } from 'ngx-countdo
 })
 export class SearchContainerComponent implements OnInit {
 
+  @ViewChild('cd', { static: false }) private countdown!: CountdownComponent;
+
   inputStarted = false;
   isLoading = false;
   repositories: gitHubRepo[] = [];
   apiTimeout = false;
-  @ViewChild('cd', { static: false }) private countdown!: CountdownComponent;
   countdownConfig: CountdownConfig = { leftTime: 60};
+
+  // Const(s) could be moved to better place
   gitHubDocsLink = "https://docs.github.com/en/rest/reference/search#rate-limit"
   API_TIMEOUT_ERRORCODE = 403;
 
@@ -40,8 +43,8 @@ export class SearchContainerComponent implements OnInit {
     this.inputStarted = true;
   }
 
-  handleEvent(e: CountdownEvent) {
-    console.log(e)
+  // Countdown 
+  handleCountdownEvent(e: CountdownEvent) {
     if (e.action === 'done') {
       this.apiTimeout = false;
       this.isLoading = false;
